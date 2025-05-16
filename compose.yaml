@@ -21,6 +21,7 @@ services:
     ports:
       - "3306:3306"
     environment:
+      MYSQL_DATABASE: hanzo
       MYSQL_ROOT_PASSWORD: 123456
-    volumes:
-      - /usr/local/docker/mysql:/var/lib/mysql
+    # volumes:
+    #   - /usr/local/docker/mysql:/var/lib/mysql
