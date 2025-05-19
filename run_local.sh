@@ -25,6 +25,7 @@ make deps
 # ▶️ Run Application
 # ==========================
 echo "▶️ Running Application..."
+docker run -it -d -p 6379:6379 --name redis redis
 make run
 
 echo "🎉 Application is running successfully!"
