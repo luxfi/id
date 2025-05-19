@@ -1,17 +1,3 @@
-// Copyright 2021 The Casdoor Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 import React, {Component, Suspense, lazy} from "react";
 import "./App.less";
 import {Helmet} from "react-helmet";
@@ -66,7 +52,7 @@ class App extends Component {
     Setting.initServerUrl();
     Auth.initAuthWithConfig({
       serverUrl: Setting.ServerUrl,
-      appName: Conf.DefaultApplication, // the application used in Casdoor root path: "/"
+      appName: Conf.DefaultApplication, // the application used in Hanzo root path: "/"
     });
   }
 
@@ -275,8 +261,8 @@ class App extends Component {
     footerHtml = footerHtml ?? this.state.application?.footerHtml;
     return (
       <React.Fragment>
-        {!this.state.account ? null : <div style={{display: "none"}} id="CasdoorApplicationName" value={this.state.account.signupApplication} />}
-        {!this.state.account ? null : <div style={{display: "none"}} id="CasdoorAccessToken" value={this.state.accessToken} />}
+        {!this.state.account ? null : <div style={{display: "none"}} id="HanzoApplicationName" value={this.state.account.signupApplication} />}
+        {!this.state.account ? null : <div style={{display: "none"}} id="HanzoAccessToken" value={this.state.accessToken} />}
         <Footer id="footer" style={
           {
             textAlign: "center",
@@ -290,7 +276,7 @@ class App extends Component {
               : (
                 Conf.CustomFooter !== null ? Conf.CustomFooter : (
                   <React.Fragment>
-                  Powered by <a target="_blank" href="https://casdoor.org" rel="noreferrer"><img style={{paddingBottom: "3px"}} height={"20px"} alt={"Casdoor"} src={logo} /></a>
+                  Powered by <a target="_blank" href="http://hanzo.ai/" rel="noreferrer"><img style={{paddingBottom: "3px"}} height={"20px"} alt={"Hanzo"} src={logo} /></a> Hanzo
                   </React.Fragment>
                 )
               )
@@ -306,7 +292,7 @@ class App extends Component {
         title={
           <React.Fragment>
             <Tooltip title="Want to deploy your own AI assistant? Click to learn more!">
-              <a target="_blank" rel="noreferrer" href={"https://casdoor.com"}>
+              <a target="_blank" rel="noreferrer" href={"https://hanzo.ai/"}>
                 <img style={{width: "20px", marginRight: "10px", marginBottom: "2px"}} alt="help" src="https://casbin.org/img/casbin.svg" />
                 AI Assistant
               </a>
