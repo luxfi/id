@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, Col, Meta} from "antd";
+import {Card, Col} from "antd";
 import * as Setting from "../Setting";
 import {withRouter} from "react-router-dom";
 class SingleCard extends React.Component {
@@ -28,7 +28,7 @@ class SingleCard extends React.Component {
     return (
       <Card.Grid style={gridStyle} onClick={() => Setting.goToLinkSoft(this, silentSigninLink)}>
         <img src={logo} alt="logo" width={"100%"} style={{marginBottom: "20px"}} />
-        <Meta
+        <Card.Meta
           title={title}
           description={desc}
           style={{justifyContent: "center"}}
@@ -50,10 +50,10 @@ class SingleCard extends React.Component {
           onClick={() => Setting.goToLinkSoft(this, silentSigninLink)}
           style={isSingle ? {width: "320px", height: "100%"} : {width: "100%", height: "100%"}}
         >
-          <Meta title={title} description={desc} />
+          <Card.Meta title={title} description={desc} />
           <br />
           <br />
-          <Meta title={""} description={Setting.getFormattedDateShort(time)} />
+          <Card.Meta title={""} description={Setting.getFormattedDateShort(time)} />
         </Card>
       </Col>
     );

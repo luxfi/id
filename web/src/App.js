@@ -18,7 +18,8 @@ import SamlCallback from "./auth/SamlCallback";
 import i18next from "i18next";
 import {withTranslation} from "react-i18next";
 
-lazy(() => import("./ManagementPage"));
+/* eslint-disable-next-line no-unused-vars */
+const ManagementPage = lazy(() => import("./ManagementPage"));
 import {setTwoToneColor} from "@ant-design/icons";
 import * as ApplicationBackend from "./backend/ApplicationBackend";
 import * as Cookie from "cookie";
