@@ -18,7 +18,7 @@ class ProductListPage extends BaseListPage {
       name: `product_${randomName}`,
       createdTime: moment().format(),
       displayName: `New Product - ${randomName}`,
-      image: `${Setting.StaticBaseUrl}/img/casdoor-logo_1185x256.png`,
+      image: "/images/hanzo.png",
       tag: "Hanzo Summit 2022",
       currency: "USD",
       price: 300,

@@ -9,7 +9,7 @@ export const TourObj = {
       cover: (
         <img
           alt="hanzo.png"
-          src={`${Setting.StaticBaseUrl}/img/casdoor-logo_1185x256.png`}
+          src={"/images/hanzo.png"}
         />
       ),
     },

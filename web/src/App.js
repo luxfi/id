@@ -1,4 +1,4 @@
-import React, {Component, Suspense, lazy} from "react";
+import React, {Component, Suspense} from "react";
 import "./App.less";
 import {Helmet} from "react-helmet";
 import * as Setting from "./Setting";
@@ -17,8 +17,6 @@ import AuthCallback from "./auth/AuthCallback";
 import SamlCallback from "./auth/SamlCallback";
 import i18next from "i18next";
 import {withTranslation} from "react-i18next";
-const ManagementPage = lazy(() => import("./ManagementPage"));
-const {Footer, Content} = Layout;
 
 import {setTwoToneColor} from "@ant-design/icons";
 import * as ApplicationBackend from "./backend/ApplicationBackend";
@@ -505,7 +503,7 @@ class App extends Component {
       <React.Fragment>
         {(this.state.account === undefined || this.state.account === null) ?
           <Helmet>
-            <link rel="icon" href={"https://cdn.casdoor.com/static/favicon.png"} />
+            <link rel="icon" href={"/images/favicon.ico"} />
           </Helmet> :
           <Helmet>
             <title>{this.state.account.organization?.displayName}</title>

@@ -237,7 +237,7 @@ export const OtherProviderInfo = {
     },
     "Custom": {
       logo: `${StaticBaseUrl}/img/social_custom.png`,
-      url: "https://door.casdoor.com/",
+      url: "https://hanzo.ai/",
     },
   },
   Payment: {
@@ -331,7 +331,7 @@ export const OtherProviderInfo = {
     },
     "Custom HTTP": {
       logo: `${StaticBaseUrl}/img/email_default.png`,
-      url: "https://casdoor.org/docs/provider/notification/overview",
+      url: "https://hanzo.ai/docs/provider/notification/overview",
     },
     "DingTalk": {
       logo: `${StaticBaseUrl}/img/social_dingtalk.png`,

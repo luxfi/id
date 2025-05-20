@@ -585,10 +585,10 @@ class ProviderEditPage extends React.Component {
               if (value === "Local File System") {
                 this.updateProviderField("domain", Setting.getFullServerUrl());
               } else if (value === "Custom" && this.state.provider.category === "OAuth") {
-                this.updateProviderField("customAuthUrl", "https://door.casdoor.com/login/oauth/authorize");
+                this.updateProviderField("customAuthUrl", "https://hanzo.ai/login/oauth/authorize");
                 this.updateProviderField("scopes", "openid profile email");
-                this.updateProviderField("customTokenUrl", "https://door.casdoor.com/api/login/oauth/access_token");
-                this.updateProviderField("customUserInfoUrl", "https://door.casdoor.com/api/userinfo");
+                this.updateProviderField("customTokenUrl", "https://hanzo.ai/api/login/oauth/access_token");
+                this.updateProviderField("customUserInfoUrl", "https://hanzo.ai/api/userinfo");
               } else if (value === "Custom HTTP SMS") {
                 this.updateProviderField("endpoint", "https://example.com/send-custom-http-sms");
                 this.updateProviderField("method", "GET");
