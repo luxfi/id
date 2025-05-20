@@ -1,4 +1,4 @@
-import React, {Component, Suspense} from "react";
+import React, {Component, Suspense, lazy} from "react";
 import "./App.less";
 import {Helmet} from "react-helmet";
 import * as Setting from "./Setting";
@@ -18,6 +18,7 @@ import SamlCallback from "./auth/SamlCallback";
 import i18next from "i18next";
 import {withTranslation} from "react-i18next";
 
+lazy(() => import("./ManagementPage"));
 import {setTwoToneColor} from "@ant-design/icons";
 import * as ApplicationBackend from "./backend/ApplicationBackend";
 import * as Cookie from "cookie";
@@ -261,7 +262,7 @@ class App extends Component {
       <React.Fragment>
         {!this.state.account ? null : <div style={{display: "none"}} id="HanzoApplicationName" value={this.state.account.signupApplication} />}
         {!this.state.account ? null : <div style={{display: "none"}} id="HanzoAccessToken" value={this.state.accessToken} />}
-        <Footer id="footer" style={
+        <Layout.Footer id="footer" style={
           {
             textAlign: "center",
           }
@@ -279,7 +280,7 @@ class App extends Component {
                 )
               )
           }
-        </Footer>
+        </Layout.Footer>
       </React.Fragment>
     );
   }
@@ -381,7 +382,7 @@ class App extends Component {
         }}>
           <StyleProvider hashPriority="high" transformers={[legacyLogicalPropertiesTransformer]}>
             <Layout id="parent-area">
-              <Content style={{display: "flex", justifyContent: "center"}}>
+              <Layout.Content style={{display: "flex", justifyContent: "center"}}>
                 {
                   this.isEntryPages() ?
                     <EntryPage
@@ -404,7 +405,7 @@ class App extends Component {
                         extra={<a href="/"><Button type="primary">{i18next.t("general:Back Home")}</Button></a>} />} />
                     </Switch>
                 }
-              </Content>
+              </Layout.Content>
               {
                 this.renderFooter(logo, footerHtml)
               }

@@ -14,7 +14,6 @@ import ThemeEditor from "./common/theme/ThemeEditor";
 import MfaTable from "./table/MfaTable";
 import {NavItemTree} from "./common/NavItemTree";
 import {WidgetItemTree} from "./common/WidgetItemTree";
-
 class OrganizationEditPage extends React.Component {
   constructor(props) {
     super(props);
@@ -310,7 +309,7 @@ class OrganizationEditPage extends React.Component {
                   {id: "Plain", name: "Plain"},
                   {id: "AES", name: "AES"},
                   {id: "DES", name: "DES"},
-                ].map((obfuscatorType, index) => <Option key={index} value={obfuscatorType.id}>{obfuscatorType.name}</Option>)
+                ].map((obfuscatorType, index) => <Select.Option key={index} value={obfuscatorType.id}>{obfuscatorType.name}</Select.Option>)
               }
             </Select>
           </Col>
@@ -413,7 +412,7 @@ class OrganizationEditPage extends React.Component {
           <Col span={22} >
             <Select virtual={false} mode="tags" style={{width: "100%"}} value={this.state.organization.userTypes} onChange={(value => {this.updateOrganizationField("userTypes", value);})}>
               {
-                this.state.organization.userTypes?.map((item, index) => <Option key={index} value={item}>{item}</Option>)
+                this.state.organization.userTypes?.map((item, index) => <Select.Option key={index} value={item}>{item}</Select.Option>)
               }
             </Select>
           </Col>
@@ -425,7 +424,7 @@ class OrganizationEditPage extends React.Component {
           <Col span={22} >
             <Select virtual={false} mode="tags" style={{width: "100%"}} value={this.state.organization.tags} onChange={(value => {this.updateOrganizationField("tags", value);})}>
               {
-                this.state.organization.tags?.map((item, index) => <Option key={index} value={item}>{item}</Option>)
+                this.state.organization.tags?.map((item, index) => <Select.Option key={index} value={item}>{item}</Select.Option>)
               }
             </Select>
           </Col>

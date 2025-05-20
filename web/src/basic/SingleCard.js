@@ -1,8 +1,7 @@
 import React from "react";
-import {Card, Col} from "antd";
+import {Card, Col, Meta} from "antd";
 import * as Setting from "../Setting";
 import {withRouter} from "react-router-dom";
-import Meta from "antd/es/card/Meta";
 class SingleCard extends React.Component {
   constructor(props) {
     super(props);

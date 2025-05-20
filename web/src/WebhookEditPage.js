@@ -187,7 +187,7 @@ class WebhookEditPage extends React.Component {
           <Col span={22} >
             <Select virtual={false} style={{width: "100%"}} disabled={!Setting.isAdminUser(this.props.account)} value={this.state.webhook.organization} onChange={(value => {this.updateWebhookField("organization", value);})}>
               {
-                this.state.organizations.map((organization, index) => <Option key={index} value={organization.name}>{organization.name}</Option>)
+                this.state.organizations.map((organization, index) => <Select.Option key={index} value={organization.name}>{organization.name}</Select.Option>)
               }
             </Select>
           </Col>
@@ -224,7 +224,7 @@ class WebhookEditPage extends React.Component {
                   {id: "GET", name: "GET"},
                   {id: "PUT", name: "PUT"},
                   {id: "DELETE", name: "DELETE"},
-                ].map((method, index) => <Option key={index} value={method.id}>{method.name}</Option>)
+                ].map((method, index) => <Select.Option key={index} value={method.id}>{method.name}</Select.Option>)
               }
             </Select>
           </Col>
@@ -239,7 +239,7 @@ class WebhookEditPage extends React.Component {
                 [
                   {id: "application/json", name: "application/json"},
                   {id: "application/x-www-form-urlencoded", name: "application/x-www-form-urlencoded"},
-                ].map((contentType, index) => <Option key={index} value={contentType.id}>{contentType.name}</Option>)
+                ].map((contentType, index) => <Select.Option key={index} value={contentType.id}>{contentType.name}</Select.Option>)
               }
             </Select>
           </Col>
@@ -270,7 +270,7 @@ class WebhookEditPage extends React.Component {
                 (
                   ["signup", "login", "logout", "new-user"].concat(this.getApiPaths()).map((option, index) => {
                     return (
-                      <Option key={option} value={option}>{option}</Option>
+                      <Select.Option key={option} value={option}>{option}</Select.Option>
                     );
                   })
                 )
@@ -295,7 +295,7 @@ class WebhookEditPage extends React.Component {
           <Col span={22} >
             <Select virtual={false} mode="tags" showSearch style={{width: "100%"}} value={this.state.webhook.tokenFields} onChange={(value => {this.updateWebhookField("tokenFields", value);})}>
               {
-                Setting.getUserCommonFields().map((item, index) => <Option key={index} value={item}>{item}</Option>)
+                Setting.getUserCommonFields().map((item, index) => <Select.Option key={index} value={item}>{item}</Select.Option>)
               }
             </Select>
           </Col>
