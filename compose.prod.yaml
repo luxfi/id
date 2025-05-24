@@ -11,7 +11,7 @@ services:
       - "172.17.0.1:host-gateway"
     depends_on:
       - db
-      - redis
+      - redis-iam
     environment:
       RUNNING_IN_DOCKER: "true"
     # volumes:
@@ -32,6 +32,7 @@ services:
       - "traefik.http.services.iam.loadbalancer.server.port=8000"
     networks:
       - hanzo-network
+      - iam-prod-network
   db:
     restart: always
     image: mysql:8.0.25
@@ -41,19 +42,20 @@ services:
     volumes:
       - iam-mysql:/var/lib/mysql
     networks:
-      - hanzo-network
-  redis:
+      - iam-prod-network
+  redis-iam:
     restart: always
     image: redis:7-alpine
     volumes:
       - iam-redis:/data
     networks:
-      - hanzo-network
+      - iam-prod-network
 volumes:
   iam-mysql:
     name: iam-mysql-prod
   iam-redis:
     driver: local
 networks:
+  iam-prod-network:
   hanzo-network:
     external: true
