@@ -11,11 +11,13 @@ services:
       - "172.17.0.1:host-gateway"
     depends_on:
       - iam-dev-db
-      - iam-dev-redis
+      - redis-iam-dev
     environment:
       RUNNING_IN_DOCKER: "true"
-    volumes:
-      - /etc/hanzo/compose/iam-prod-c0gkof/files/app.conf:/conf/app.conf
+    
+    # volumes:
+    #   - ./conf/app_dev.conf:/conf/app.conf
+    #   - /etc/hanzo/compose/iam-prod-c0gkof/files/app.conf:/conf/app.conf
     tmpfs:
       - /tmp:exec,mode=1777
     labels:
@@ -32,9 +34,10 @@ services:
       - "traefik.http.services.iam.loadbalancer.server.port=8000"
     networks:
       - hanzo-network
-
+      - internal-dev-iam
   iam-dev-db:
     restart: always
+    # image: mysql
     image: mysql:8.0.25
     platform: linux/amd64
     environment:
@@ -42,15 +45,14 @@ services:
     volumes:
       - iam-dev-db:/var/lib/mysql
     networks:
-      - hanzo-network
-
-  iam-dev-redis:
+      - internal-dev-iam
+  redis-iam-dev:
     restart: always
     image: redis:7-alpine
     volumes:
       - iam-dev-redis:/data
     networks:
-      - hanzo-network
+      - internal-dev-iam
 
 volumes:
   iam-dev-db:
@@ -59,5 +61,6 @@ volumes:
     driver: local
 
 networks:
+  internal-dev-iam:
   hanzo-network:
     external: true

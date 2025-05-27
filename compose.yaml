@@ -14,6 +14,8 @@ services:
       RUNNING_IN_DOCKER: "true"
     volumes:
       - ./conf:/conf/
+    networks:
+      - hanzo-network
   db:
     restart: always
     image: mysql:8.0.25
@@ -23,5 +25,19 @@ services:
     environment:
       MYSQL_DATABASE: hanzo
       MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - /usr/local/docker/mysql:/var/lib/mysql
+    networks:
+      - hanzo-network
+
+  redis:
+    restart: always
+    image: redis:7-alpine
     # volumes:
-    #   - /usr/local/docker/mysql:/var/lib/mysql
+    #   - iam-dev-redis:/data
+    networks:
+      - hanzo-network
+
+networks:
+  hanzo-network:
+    driver: bridge
