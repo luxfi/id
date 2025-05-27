@@ -15,8 +15,8 @@ services:
     environment:
       RUNNING_IN_DOCKER: "true"
     
-    volumes:
-      - ./conf/app_dev.conf:/conf/app.conf
+    # volumes:
+    #   - ./conf/app_dev.conf:/conf/app.conf
     #   - /etc/hanzo/compose/iam-prod-c0gkof/files/app.conf:/conf/app.conf
     tmpfs:
       - /tmp:exec,mode=1777
@@ -31,7 +31,7 @@ services:
       - "traefik.http.routers.iam-dev-https.entrypoints=websecure"
       - "traefik.http.routers.iam-dev-https.middlewares=well-known,iam-dev-csp"
       - "traefik.http.routers.iam-dev-https.tls.certresolver=letsencrypt"
-      - "traefik.http.services.iam.loadbalancer.server.port=8000"
+      - "traefik.http.services.iam-dev.loadbalancer.server.port=8000"
     networks:
       - hanzo-network
       - internal-dev-iam
