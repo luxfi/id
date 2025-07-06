@@ -109,7 +109,9 @@ jobs:
       
     - name: Build
       working-directory: ./web
-      run: CI=false yarn build
+      run: |
+        export NODE_OPTIONS="--max-old-space-size=4096"
+        CI=false yarn build
       
   integration-tests:
     name: Integration Tests
