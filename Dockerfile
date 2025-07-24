@@ -10,20 +10,22 @@ COPY . .
 RUN ./build.sh
 RUN go test -v -run TestGetVersionInfo ./util/system_test.go ./util/system.go > version_info.txt
 
-FROM alpine:latest AS STANDARD
+FROM debian:bullseye-slim AS STANDARD
 LABEL MAINTAINER="https://casdoor.org/"
 ARG USER=casdoor
 ARG TARGETOS
 ARG TARGETARCH
 ENV BUILDX_ARCH="${TARGETOS:-linux}_${TARGETARCH:-amd64}"
 
-RUN sed -i 's/https/http/' /etc/apk/repositories
-RUN apk add --update sudo
-RUN apk add tzdata
-RUN apk add curl
-RUN apk add ca-certificates && update-ca-certificates
+RUN apt-get update && apt-get install -y \
+    sudo \
+    tzdata \
+    curl \
+    ca-certificates \
+    && update-ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN adduser -D $USER -u 1000 \
+RUN useradd -m -u 1000 -s /bin/bash $USER \
     && echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER \
     && chmod 0440 /etc/sudoers.d/$USER \
     && mkdir logs \

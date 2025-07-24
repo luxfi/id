@@ -1,0 +1,240 @@
+{
+  "organizations": [
+    {
+      "owner": "admin",
+      "name": "built-in",
+      "displayName": "Hanzo AI",
+      "websiteUrl": "https://hanzo.ai",
+      "favicon": "https://hanzo.ai/favicon.ico",
+      "passwordType": "bcrypt",
+      "enableSoftDeletion": false,
+      "isProfilePublic": false,
+      "mfaItems": ["Email", "SMS", "Authenticator app"],
+      "tags": ["Admin"],
+      "languages": ["en", "zh", "ja"],
+      "defaultApplication": "hanzo-chat"
+    }
+  ],
+  "applications": [
+    {
+      "owner": "admin",
+      "name": "hanzo-chat",
+      "displayName": "Hanzo AI Chat",
+      "logo": "https://hanzo.ai/logo.png",
+      "homepageUrl": "http://localhost:3081",
+      "description": "Hanzo AI Chat Platform",
+      "organization": "built-in",
+      "enablePassword": true,
+      "enableSignUp": true,
+      "enableSigninSession": false,
+      "enableAutoSignin": true,
+      "enableCodeSignin": false,
+      "enableSamlCompress": false,
+      "enableSamlC14n10": false,
+      "enableSamlPostBinding": false,
+      "enableWebAuthn": true,
+      "enableLinkWithEmail": false,
+      "orgChoiceMode": "None",
+      "samlReplyUrl": "http://localhost:8000/api/saml/callback",
+      "providers": [
+        {
+          "name": "provider_hanzo_google",
+          "canSignUp": true,
+          "canSignIn": true,
+          "canUnlink": true,
+          "prompted": false,
+          "signupGroup": ""
+        },
+        {
+          "name": "provider_hanzo_github",
+          "canSignUp": true,
+          "canSignIn": true,
+          "canUnlink": true,
+          "prompted": false,
+          "signupGroup": ""
+        }
+      ],
+      "signupItems": [
+        {
+          "name": "Username",
+          "visible": true,
+          "required": true,
+          "prompted": false,
+          "rule": "None"
+        },
+        {
+          "name": "Email",
+          "visible": true,
+          "required": true,
+          "prompted": false,
+          "rule": "Normal"
+        },
+        {
+          "name": "Password",
+          "visible": true,
+          "required": true,
+          "prompted": false,
+          "rule": "None"
+        },
+        {
+          "name": "Confirm password",
+          "visible": true,
+          "required": true,
+          "prompted": false,
+          "rule": "None"
+        },
+        {
+          "name": "Phone",
+          "visible": true,
+          "required": false,
+          "prompted": false,
+          "rule": "None"
+        },
+        {
+          "name": "Agreement",
+          "visible": true,
+          "required": true,
+          "prompted": false,
+          "rule": "None"
+        }
+      ],
+      "grantTypes": ["authorization_code", "password", "client_credentials", "id_token", "refresh_token"],
+      "redirectUris": ["http://localhost:3081/api/auth/sso/hanzo-iam", "http://localhost:3081/api/auth/callback/hanzo-iam"],
+      "expireInHours": 168,
+      "refreshExpireInHours": 168,
+      "signupUrl": "",
+      "signinUrl": "",
+      "forgetUrl": "",
+      "affiliationUrl": "",
+      "termsOfUse": "",
+      "signupHtml": "",
+      "signinHtml": "",
+      "themeData": {
+        "themeType": "hanzo",
+        "colorPrimary": "#1890ff",
+        "borderRadius": 6,
+        "isCompact": false,
+        "isEnabled": true
+      },
+      "formCss": "",
+      "formCssMobile": "",
+      "formOffset": 2,
+      "formWidth": 4,
+      "formBackgroundUrl": "",
+      "clientId": "hanzo-chat-client",
+      "clientSecret": "hanzo-chat-secret-change-in-production"
+    }
+  ],
+  "users": [
+    {
+      "owner": "built-in",
+      "name": "admin",
+      "type": "normal-user",
+      "password": "demo1234",
+      "displayName": "Admin",
+      "email": "admin@hanzo.ai",
+      "emailVerified": true,
+      "phone": "",
+      "countryCode": "",
+      "address": [],
+      "affiliation": "Hanzo AI",
+      "tag": "Staff",
+      "signup_application": "hanzo-chat",
+      "hash": "",
+      "pre_hash": "",
+      "github": "",
+      "google": "",
+      "qq": "",
+      "wechat": "",
+      "facebook": "",
+      "dingtalk": "",
+      "weibo": "",
+      "gitee": "",
+      "linkedin": "",
+      "wecom": "",
+      "lark": "",
+      "gitlab": "",
+      "score": 2000,
+      "isAdmin": true,
+      "isGlobalAdmin": true,
+      "isForbidden": false,
+      "isDeleted": false,
+      "homepageUrl": "https://hanzo.ai",
+      "bio": "Hanzo AI Administrator"
+    },
+    {
+      "owner": "built-in",
+      "name": "hattori",
+      "type": "normal-user",
+      "password": "demo1234",
+      "displayName": "Hattori Hanzo",
+      "email": "hattori@hanzo.ai",
+      "emailVerified": true,
+      "phone": "",
+      "countryCode": "",
+      "address": [],
+      "affiliation": "Hanzo AI",
+      "tag": "Demo",
+      "signup_application": "hanzo-chat",
+      "hash": "",
+      "pre_hash": "",
+      "score": 1000,
+      "isAdmin": false,
+      "isGlobalAdmin": false,
+      "isForbidden": false,
+      "isDeleted": false,
+      "homepageUrl": "",
+      "bio": "Demo user for Hanzo AI Chat"
+    }
+  ],
+  "providers": [
+    {
+      "owner": "admin",
+      "name": "provider_hanzo_google",
+      "displayName": "Google",
+      "type": "Google",
+      "category": "OAuth",
+      "clientId": "${GOOGLE_CLIENT_ID}",
+      "clientSecret": "${GOOGLE_CLIENT_SECRET}",
+      "redirectUrl": "http://localhost:8000/callback",
+      "scopes": "profile email",
+      "userMapping": {
+        "id": "id",
+        "username": "email",
+        "displayName": "name",
+        "email": "email",
+        "avatarUrl": "picture"
+      }
+    },
+    {
+      "owner": "admin",
+      "name": "provider_hanzo_github",
+      "displayName": "GitHub",
+      "type": "GitHub",
+      "category": "OAuth",
+      "clientId": "${GITHUB_CLIENT_ID}",
+      "clientSecret": "${GITHUB_CLIENT_SECRET}",
+      "redirectUrl": "http://localhost:8000/callback",
+      "scopes": "user:email read:user",
+      "userMapping": {
+        "id": "id",
+        "username": "login",
+        "displayName": "name",
+        "email": "email",
+        "avatarUrl": "avatar_url"
+      }
+    }
+  ],
+  "certs": [
+    {
+      "owner": "admin",
+      "name": "cert-built-in",
+      "displayName": "Built-in Cert",
+      "scope": "JWT",
+      "type": "x509",
+      "certificate": "-----BEGIN CERTIFICATE-----\nMIIEHTCCAwWgAwIBAgIRAIiFOI7w7BjEJmM9UaKkgskwDQYJKoZIhvcNAQELBQAw\ngaUxHjAcBgNVBAoTFW1rY2VydCBkZXZlbG9wbWVudCBDQTE8MDoGA1UECwwzYXBw\nbGVAQXBwbGVzLU1hY0Jvb2stUHJvLmxvY2FsIChBcHBsZSBDb21wdXRlciwgSW5j\nKTFDMEEGA1UEAww6bWtjZXJ0IGFwcGxlQEFwcGxlcy1NYWNCb29rLVByby5sb2Nh\nbCAoQXBwbGUgQ29tcHV0ZXIsIEluYykwHhcNMjIwMjIxMDgzMzMwWhcNMzIwMjIx\nMDgzMzMwWjBnMScwJQYDVQQKEx5ta2NlcnQgZGV2ZWxvcG1lbnQgY2VydGlmaWNh\ndGUxPDA6BgNVBAsMM2FwcGxlQEFwcGxlcy1NYWNCb29rLVByby5sb2NhbCAoQXBw\nbGUgQ29tcHV0ZXIsIEluYykwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\nAQCwNMjPXdEHvTlrzjhP2bGnI7T0qJdYnBO7oZhBZerOVsimJFCC7XJOiQ9UZuLr\nllG1EvMYVqlVHWfC4QcXCT0PdPefuzLxlgGhfsEoWGRiCTCL0HJf3XL8GBjPTpfp\ncFU0rJsnvPNPvH7LAoE2ujDqy1683HHLE0y7wjJBt2ysLbxnWxW6ILZMaVCKGN3i\n6yrMjbklh8afZBTWNvFwGzCoEE3vLDRuH8lQeMCHJ7n0oNy8MCYzxCqbJyNczWQa\nwYJfPU7cNA6TM8UhYNLVZSI6zQR/TH7p5xARAp5aY4WGr9bq9rqNzw9YHRl5yHQd\nqBBDQjVm3dGU4g1clzNPXLf5AgMBAAGjgYMwgYAwDgYDVR0PAQH/BAQDAgWgMBMG\nA1UdJQQMMAoGCCsGAQUFBwMBMB8GA1UdIwQYMBaAFGIW7dKi0XE5h8F3YKwW1ira\nuqNiMDgGA1UdEQQxMC+CCWxvY2FsaG9zdIcEfwAAAYcQAAAAAAAAAAAAAAAAAAAA\nAYcQ/oAAAAAAAACQ5o7H9RIBMAoGCSqGSIb3DQELBQADggEBAB8llsZvP3lFCCPe\nI+UK5lukU1m4e0Anj4348MdXYh8fazB6mg0h8ti/alhcPHtNn2MsrkEtJCvIBuWC\nc6fqhjKH4xPs/foqf4peLgCJQlEDBr0Lq19dP7YdLpBfYzQ3dLRlFc+QDq/hLEY0\nY5bEqnKGYnLmSCUJqQ+/jDDPyWCMVKni3BVLuNGg+vwxKqPTpZs2tcvRb0aWJhBl\nIW5r1T3PhELk8cQW3xkL0GbLbKsDjFdGCgB5rWWWrF0Z/v4GSlQooVsV6fRC6lxY\nSEGPehd3REchgAVBboIrXBdaVWlr/+8L8nfh7gKuuPy0JvksxlmIwJqyEQiraanT\nTx0Cgco=\n-----END CERTIFICATE-----",
+      "privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAsDTIz13RB705a844T9mxpyO09KiXWJwTu6GYQWXK\nUZVh9gOIFwk9D3T3n7sy8ZYBoX7BKFhkYgkwi9ByX91y/BgYz06X6XBVN\nKybJ7zzT7x+ywKBNrow6steOtxxxxMu8IyQbdsrC28Z1sVuiC2TGlQihjd\n4usqzI25JYfGn2QU1jbxcBswqBBN7yw0bh/JUHjAhye59KDcvDAmM8Qqmy\ncjXM1kGsGCXz1O3DQOkzPFIWDS1WUiOs0Ef0x+6ecQEQKeWmOFhq/W6va\n6jc8PWB0Zech0HagQQ0I1Zt3RlOINXJczT1y3+QIDAQABAoIBABUgz9WW4\nAYBQfMvM1/rqp9/Jz1RvIRTrIkLodlWbnNMlLPmsIiR7D3L4HGZrQ0SfGTS\nOMCHLKSMgXFBK5uxgQy0X7KSE3cS1zU7pSZhoTxuLJNnI0U+d7aBM8qrfKD\ntDxEY1Qy7dEkCfN1r7lDBAcGgN7xf/K7oCMZZPTp/GMdzUYLQcaUZc7Er8O\nM3KLvIDez9FRlUiJsKGKGzDXNP7LYUwlrKfnvdF/kmaalAKOmjRCfHFl3u9\nfzgvcziGnpEwvZ3cAqvCFmjZ7qvCbQlpoQ4aIao7ClmOJ7cRJzcMchQAxvH\no0kiMd3FDHaOet+xHDduCWukPixZAcjAECgYEA1QkjExH6lN0esAnxfCFEc\nZc+p7RqDBmkZq4jNZjE5YhLLB1x0vRa8x9bGeBYCbAQhdPxHd8Ws/xFWJhW\nvldnr1xm8qrLeTNOwB2uG9CTOhCGx8t7A0kPwJQdyP9HfnYDA/I7+xAdQSh\nXVY7wGtmPnEU7kLPUl7GuIquQZ2cCgYEA09PEQq1aUOPR9eqfjPB8y9haWl\n/waBJaFFJMSX7MRheMPYnD6yuNmJCg4SBsgsN+mxNp4JIJLmJBNNzWCHPFjV\nGjCiQ1yFCj8J3MEZm+sE9MqUYEPCPj+HTRPCmX6qa8THvLWny3JFT/cLkRrV\nlJOUef8hNBcEq2hfdfnw6yUCgYBLJv6SPCb5AqFj2dWp3BqddGwFNXmWBzV\nRwg1F5zzPmIbZjBnPD0lYAaEQV7QD9maz6Hr7X0Ldo5Xqlu8TDJXw7uxNOV\nD8P4m6HYFWColAH8UAfFGW5i0XjXJAYZGUf9dN7cNltWGl6P5NQAsR+Imvpk\nKNiUUl0aWnPQKBgExxKa1nU7FHqeccNdgRAZEPEbd7YH2RjpQPaKNaZUVtC\nH2ky7flpUB7SFvKz1ZS7qArGj0xLQweUBvb1yKBe6WHQ4dMKi1gJr7IfUyh\nOu+cH0C+QBZD0OILLr8rGcGpYZEcGb3dH8Ba/bWaBgDCrFkCMdXNiHB29/k\nczLJAoGBALpPq4ACU37f+NwPGHaNTKszekm6g3vp6cANLUbF6PoYdpCmCEu\nTtdmtNr6ds8KBW7U0qvUxf+wG7voXHhmKKeN5cGXTGHTHUL0riJYFaLWXaHP\nzc4jDMN3U5ViaMZW0MV8O8fpDPRHnYNvj1DvUbxqXTbjj0LvjvxnHDpJFfY\nI\n-----END RSA PRIVATE KEY-----",
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwdG8LY6Vpe3QJUqM+MwK\ny0Ho3vsHSU8JtNnVRIB3HYNDlTmQDLgZhMxr9eaUTMpjJipGTH5XvPvNrVSJHzNy\nWQwQNLyLHgLNL1FG5LqNPCU2JHRMgKBBfCoN6lmdGZrj7mnQWgfCFNGMf0ZTHZ5T\nJZnjYLCX7qCjLEmuHPNbqVKUNiNEKFNi6qNIDKHq9GlFMdJ9ReJnuMVFvPNzKZRP\nztAYMv2dUK7MsZ1/4LCqmJ9sAD9spIBQQzGxWvlIu1GudGTqBDICcTcFvQZ3XPKT\nbwsJS5UykKRNkAaAKzPGQgXOH5SlkLoJunRj7F+Qh3lLYWAz7a1cm0j8S5RCFHKi\n5QIDAQAB\n-----END PUBLIC KEY-----"
+    }
+  ]
+}
