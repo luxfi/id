@@ -1,5 +1,5 @@
 services:
-  iam:
+  lux-id:
     restart: always
     build:
       context: ./
@@ -7,57 +7,57 @@ services:
       target: STANDARD
     entrypoint: /bin/sh -c './server --createDatabase=true'
     extra_hosts:
-      - "iam.hanzo.ai:host-gateway"
+      - "id.lux.network:host-gateway"
       - "172.17.0.1:host-gateway"
     depends_on:
-      - db-iam
-      - redis-iam
+      - db-lux-id
+      - redis-lux-id
     environment:
       RUNNING_IN_DOCKER: "true"
     # volumes:
-    #   - /etc/hanzo/compose/iam-prod-c0gkof/app.conf:/conf/app.conf
+    #   - /etc/lux/compose/lux-id-prod-c0gkof/app.conf:/conf/app.conf
     tmpfs:
       - /tmp:exec,mode=1777
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.well-known.headers.customrequestheaders.X-Forwarded-Proto=https"
-      - "traefik.http.middlewares.iam-csp.headers.customResponseHeaders.Content-Security-Policy=connect-src 'self' https://iam.hanzo.ai http://iam.hanzo.ai;"
-      - "traefik.http.routers.iam-http.rule=Host(`iam.hanzo.ai`)"
-      - "traefik.http.routers.iam-http.entrypoints=web"
-      - "traefik.http.routers.iam-http.middlewares=well-known,iam-csp,redirect-to-https"
-      - "traefik.http.routers.iam-https.rule=Host(`iam.hanzo.ai`)"
-      - "traefik.http.routers.iam-https.entrypoints=websecure"
-      - "traefik.http.routers.iam-https.middlewares=well-known,iam-csp"
-      - "traefik.http.routers.iam-https.tls.certresolver=letsencrypt"
-      - "traefik.http.services.iam.loadbalancer.server.port=8000"
+      - "traefik.http.middlewares.lux-id-csp.headers.customResponseHeaders.Content-Security-Policy=connect-src 'self' https://id.lux.network http://id.lux.network;"
+      - "traefik.http.routers.lux-id-http.rule=Host(`id.lux.network`)"
+      - "traefik.http.routers.lux-id-http.entrypoints=web"
+      - "traefik.http.routers.lux-id-http.middlewares=well-known,lux-id-csp,redirect-to-https"
+      - "traefik.http.routers.lux-id-https.rule=Host(`id.lux.network`)"
+      - "traefik.http.routers.lux-id-https.entrypoints=websecure"
+      - "traefik.http.routers.lux-id-https.middlewares=well-known,lux-id-csp"
+      - "traefik.http.routers.lux-id-https.tls.certresolver=letsencrypt"
+      - "traefik.http.services.lux-id.loadbalancer.server.port=8000"
     networks:
-      - hanzo-network
-      - internal-network-iam
-  db-iam:
+      - lux-network
+      - internal-network-lux-id
+  db-lux-id:
     restart: always
     image: mysql:8.0.25
     platform: linux/amd64
     environment:
       MYSQL_ROOT_PASSWORD: 123456
     volumes:
-      - iam-mysql:/var/lib/mysql
+      - lux-id-mysql:/var/lib/mysql
     networks:
-      - internal-network-iam
+      - internal-network-lux-id
 
-  redis-iam:
+  redis-lux-id:
     restart: always
     image: redis:7-alpine
     volumes:
-      - iam-redis:/data
+      - lux-id-redis:/data
     networks:
-      - internal-network-iam
+      - internal-network-lux-id
 
 volumes:
-  iam-mysql:
-    name: iam-mysql-prod
-  iam-redis:
+  lux-id-mysql:
+    name: lux-id-mysql-prod
+  lux-id-redis:
     driver: local
 networks:
-  internal-network-iam:
-  hanzo-network:
+  internal-network-lux-id:
+  lux-network:
     external: true

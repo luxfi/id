@@ -1,5 +1,5 @@
 services:
-  iam:
+  lux-id:
     restart: always
     build:
       context: ./
@@ -15,7 +15,7 @@ services:
     volumes:
       - ./conf:/conf/
     networks:
-      - hanzo-network
+      - lux-network
   db:
     restart: always
     image: mysql:8.0.25
@@ -23,21 +23,21 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: hanzo
+      MYSQL_DATABASE: lux
       MYSQL_ROOT_PASSWORD: 123456
     volumes:
       - /usr/local/docker/mysql:/var/lib/mysql
     networks:
-      - hanzo-network
+      - lux-network
 
   redis:
     restart: always
     image: redis:7-alpine
     # volumes:
-    #   - iam-dev-redis:/data
+    #   - lux-id-dev-redis:/data
     networks:
-      - hanzo-network
+      - lux-network
 
 networks:
-  hanzo-network:
+  lux-network:
     driver: bridge

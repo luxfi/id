@@ -1,4 +1,4 @@
-module github.com/casdoor/casdoor
+module github.com/luxfi/id
 
 go 1.21
 
