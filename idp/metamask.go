@@ -55,7 +55,7 @@ func (idp *MetaMaskIdProvider) GetToken(code string) (*oauth2.Token, error) {
 }
 
 func (idp *MetaMaskIdProvider) GetUserInfo(token *oauth2.Token) (*UserInfo, error) {
-	// TODO use "github.com/ethereum/go-ethereum" to check address's eth balance or transaction
+	// TODO use "github.com/luxfi/geth" to check address's eth balance or transaction
 	web3AuthToken, ok := token.Extra(Web3AuthTokenKey).(Web3AuthToken)
 	if !ok {
 		return nil, errors.New("invalid web3AuthToken")

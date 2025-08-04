@@ -123,6 +123,115 @@
       "formBackgroundUrl": "",
       "clientId": "hanzo-chat-client",
       "clientSecret": "hanzo-chat-secret-change-in-production"
+    },
+    {
+      "owner": "admin",
+      "name": "lux-kms",
+      "displayName": "Lux KMS",
+      "logo": "https://lux.network/logo.png",
+      "homepageUrl": "http://localhost:3002",
+      "description": "Lux Key Management System",
+      "organization": "built-in",
+      "enablePassword": true,
+      "enableSignUp": true,
+      "enableSigninSession": false,
+      "enableAutoSignin": true,
+      "enableCodeSignin": false,
+      "enableSamlCompress": false,
+      "enableSamlC14n10": false,
+      "enableSamlPostBinding": false,
+      "enableWebAuthn": true,
+      "enableLinkWithEmail": false,
+      "orgChoiceMode": "None",
+      "samlReplyUrl": "http://localhost:8000/api/saml/callback",
+      "providers": [
+        {
+          "name": "provider_hanzo_google",
+          "canSignUp": true,
+          "canSignIn": true,
+          "canUnlink": true,
+          "prompted": false,
+          "signupGroup": ""
+        },
+        {
+          "name": "provider_hanzo_github",
+          "canSignUp": true,
+          "canSignIn": true,
+          "canUnlink": true,
+          "prompted": false,
+          "signupGroup": ""
+        }
+      ],
+      "signupItems": [
+        {
+          "name": "Username",
+          "visible": true,
+          "required": true,
+          "prompted": false,
+          "rule": "None"
+        },
+        {
+          "name": "Email",
+          "visible": true,
+          "required": true,
+          "prompted": false,
+          "rule": "Normal"
+        },
+        {
+          "name": "Password",
+          "visible": true,
+          "required": true,
+          "prompted": false,
+          "rule": "None"
+        },
+        {
+          "name": "Confirm password",
+          "visible": true,
+          "required": true,
+          "prompted": false,
+          "rule": "None"
+        },
+        {
+          "name": "Phone",
+          "visible": true,
+          "required": false,
+          "prompted": false,
+          "rule": "None"
+        },
+        {
+          "name": "Agreement",
+          "visible": true,
+          "required": true,
+          "prompted": false,
+          "rule": "None"
+        }
+      ],
+      "grantTypes": ["authorization_code", "password", "client_credentials", "id_token", "refresh_token"],
+      "redirectUris": ["http://localhost:3002/api/auth/callback", "http://localhost:4001/api/auth/callback", "http://localhost:3002/auth/callback"],
+      "expireInHours": 168,
+      "refreshExpireInHours": 168,
+      "signupUrl": "",
+      "signinUrl": "",
+      "forgetUrl": "",
+      "affiliationUrl": "",
+      "termsOfUse": "",
+      "signupHtml": "",
+      "signinHtml": "",
+      "themeData": {
+        "themeType": "hanzo",
+        "colorPrimary": "#000000",
+        "borderRadius": 0,
+        "isCompact": false,
+        "isEnabled": true
+      },
+      "formCss": "",
+      "formCssMobile": "",
+      "formOffset": 2,
+      "formWidth": 4,
+      "formBackgroundUrl": "",
+      "clientId": "lux-kms-client",
+      "clientSecret": "lux-kms-secret-change-in-production",
+      "redirectUris": ["http://localhost:3002/api/auth/callback", "http://localhost:4001/api/v1/auth/casdoor/callback", "http://localhost:3002/auth/callback"]
     }
   ],
   "users": [
